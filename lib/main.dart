@@ -1,4 +1,5 @@
-import 'package:firebase_services_with_bloc/features/auth/login/presentation/login_page.dart';
+import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/alumni_login_page.dart';
+import 'package:firebase_services_with_bloc/features/start_up_page/start_page.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -10,8 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: LoginPage(),
+    return  MaterialApp(
+      home: StartPage(),
     );
   }
 }

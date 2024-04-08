@@ -1,18 +1,18 @@
 import 'package:firebase_services_with_bloc/constant/size/sized.dart';
-import 'package:firebase_services_with_bloc/features/auth/login/presentation/widgets/action_button.dart';
-import 'package:firebase_services_with_bloc/features/auth/login/presentation/widgets/auth_button.dart';
-import 'package:firebase_services_with_bloc/features/auth/login/presentation/widgets/textfield.dart';
+import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/action_button.dart';
+import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/auth_button.dart';
+import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class SignUpPage extends StatefulWidget {
+class AlumniSignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<AlumniSignUpPage> createState() => _AlumniSignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _AlumniSignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
