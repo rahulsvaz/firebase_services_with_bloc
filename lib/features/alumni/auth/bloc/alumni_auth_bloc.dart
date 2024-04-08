@@ -15,9 +15,19 @@ class AlumniAuthBloc extends Bloc<AlumniAuthEvent, AlumniAuthState> {
       AlumniAuthLoginEvent event, Emitter<AlumniAuthState> emit) {}
   FutureOr<void> _alumniAuthSignUpEvent(
       AlumniAuthSignUpEvent event, Emitter<AlumniAuthState> emit) async {
-
-        
-    await FirebaseApi.signUpAlumni(
-        event.email, event.password, event.name, event.context);
+    emit(
+      AlumniAuthLoading(),
+    );
+    try {
+      await FirebaseApi.signUpAlumni(
+          event.email, event.password, event.name, event.context);
+      emit(
+        AlumniAuthSuccess(email:event.email ),
+      );
+    } catch (error) {
+      emit(
+        AlumniAuthFailure(error: error.toString()),
+      );
+    }
   }
 }
