@@ -46,11 +46,11 @@ class _LoginPageState extends State<AlumniLoginPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AlumniSignUpPage(),
+                        builder: (context) => const AlumniSignUpPage(),
                       ),
                     );
                   },
-                  statusText: 'Dont Have An Account',
+                  statusText: "Don't Have An Account",
                   label: 'Sign Up'),
             ],
           ),

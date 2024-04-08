@@ -1,18 +1,25 @@
+import 'dart:developer';
+
 import 'package:firebase_services_with_bloc/constant/size/sized.dart';
+import 'package:firebase_services_with_bloc/features/alumni/auth/bloc/alumni_auth_bloc.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/action_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/auth_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 class AlumniSignUpPage extends StatefulWidget {
   const AlumniSignUpPage({super.key});
-
   @override
   State<AlumniSignUpPage> createState() => _AlumniSignUpPageState();
 }
 
 class _AlumniSignUpPageState extends State<AlumniSignUpPage> {
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,14 +37,28 @@ class _AlumniSignUpPageState extends State<AlumniSignUpPage> {
               const Height20(),
               const CustomTextField(label: 'Password'),
               const Height20(),
-              const AuthButton(label: 'SignUp'),
+              AuthButton(
+                label: 'SignUp',
+                callback: () async {
+                 
+                  context.read<AlumniAuthBloc>().add(
+                        AlumniAuthSignUpEvent(
+                          nameController.text.trim(),
+                          context,
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                        ),
+                      );
+                },
+              ),
               const Height20(),
               AccountActionButton(
-                  statusText: "Already have an account back to",
-                  label: "Login",
-                  callback: () {
-                    Navigator.pop(context);
-                  })
+                statusText: "Already have an account back to",
+                label: "Login",
+                callback: () {
+                  Navigator.pop(context);
+                },
+              )
             ],
           ),
         ),

@@ -9,4 +9,15 @@ sealed class AlumniAuthEvent extends Equatable {
 
 class AlumniAuthLoginEvent extends AlumniAuthEvent {}
 
-class AlumniAuthSignUpEvent extends AlumniAuthEvent {}
+class AlumniAuthSignUpEvent extends AlumniAuthEvent {
+  final String name;
+  final String email;
+  final String password;
+  final BuildContext context;
+
+  const AlumniAuthSignUpEvent(this.name, this.context,
+      {required this.email, required this.password});
+
+  @override
+  List<Object> get props => [email, password, name];
+}
