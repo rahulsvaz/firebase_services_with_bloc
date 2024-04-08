@@ -2,7 +2,6 @@ import 'package:firebase_services_with_bloc/constant/size/sized.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/action_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/auth_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/textfield.dart';
-import 'package:firebase_services_with_bloc/features/alumni/auth/signup/presentation/alumni_sign_up.dart';
 import 'package:firebase_services_with_bloc/features/student/auth/student_sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';

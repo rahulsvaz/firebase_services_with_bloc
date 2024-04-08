@@ -46,7 +46,7 @@ class _LoginPageState extends State<AlumniLoginPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SignUpPage(),
+                        builder: (context) => AlumniSignUpPage(),
                       ),
                     );
                   },

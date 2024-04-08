@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class AlumniSignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  const AlumniSignUpPage({super.key});
 
   @override
   State<AlumniSignUpPage> createState() => _AlumniSignUpPageState();
 }
 
-class _AlumniSignUpPageState extends State<SignUpPage> {
+class _AlumniSignUpPageState extends State<AlumniSignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
