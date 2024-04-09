@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_services_with_bloc/constant/size/sized.dart';
 import 'package:firebase_services_with_bloc/features/alumni/alumni_view_jobs/alumni_view_job_screen.dart';
 import 'package:firebase_services_with_bloc/features/alumni_post_job/post_job_scree.dart';
+import 'package:firebase_services_with_bloc/features/start_up_page/start_page.dart';
 import 'package:flutter/material.dart';
 
 class AlumniHomeScreen extends StatefulWidget {
@@ -21,6 +24,11 @@ class _AlumniHomeScreen extends State<AlumniHomeScreen> {
         title: const Text(
           'Home',
         ),
+         actions: [IconButton(onPressed: ()async{
+          await FirebaseAuth.instance.signOut();
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> StartPage(),),);
+          
+         }, icon: const Icon(Icons.logout))],
         centerTitle: true,
       ),
       body: Column(

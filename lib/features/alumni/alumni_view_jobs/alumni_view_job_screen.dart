@@ -14,6 +14,7 @@ class _AlumniViewJobState extends State<AlumniViewJob> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('All Jobs'),
+       
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
