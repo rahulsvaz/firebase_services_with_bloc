@@ -19,11 +19,21 @@ class _PostJObScreenState extends State<PostJObScreen> {
   final TextEditingController salaryController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
+  @override
+  void dispose() {
+    companyNameController.dispose();
+    positionController.dispose();
+    emailController.dispose();
+    salaryController.dispose();
+    locationController.dispose();
+    contactController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
+    // final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post A Job'),
@@ -38,11 +48,6 @@ class _PostJObScreenState extends State<PostJObScreen> {
               label: 'Company Name',
               controller: companyNameController,
             ),
-              const Height20(),
-            CustomTextField(
-              label: 'Email',
-              controller: emailController,
-            ),
             const Height20(),
             CustomTextField(
               label: 'Position',
@@ -54,8 +59,11 @@ class _PostJObScreenState extends State<PostJObScreen> {
               controller: salaryController,
             ),
             const Height20(),
-          
-         
+            CustomTextField(
+              label: 'Email',
+              controller: emailController,
+            ),
+            const Height20(),
             CustomTextField(
               label: 'Contact Number',
               controller: contactController,
@@ -68,14 +76,17 @@ class _PostJObScreenState extends State<PostJObScreen> {
             const Height20(),
             AuthButton(
               label: 'Post',
-              callback: () async{
-                context.read<AlumniHomeBloc>().add(AlumniJobPostEvent(
-                    companyName: companyNameController.text.trim(),
-                    place: locationController.text.trim(),
-                    contactNumber: contactController.text.trim(),
-                    position: positionController.text.trim(),
-                    email: emailController.text.trim(),
-                    salary: salaryController.text.trim()));
+              callback: () async {
+                context.read<AlumniHomeBloc>().add(
+                      AlumniJobPostEvent(
+                        companyName: companyNameController.text.trim(),
+                        place: locationController.text.trim(),
+                        contactNumber: contactController.text.trim(),
+                        position: positionController.text.trim(),
+                        email: emailController.text.trim(),
+                        salary: salaryController.text.trim(),
+                      ),
+                    );
               },
             )
           ],

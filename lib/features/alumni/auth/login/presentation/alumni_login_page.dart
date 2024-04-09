@@ -4,7 +4,7 @@ import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentat
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/auth_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/textfield.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/signup/presentation/alumni_sign_up.dart';
-import 'package:firebase_services_with_bloc/features/alumni_home_screen/presentaion/alumni_home_screen.dart';
+import 'package:firebase_services_with_bloc/features/alumni_home_screen/presentation/alumni_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';

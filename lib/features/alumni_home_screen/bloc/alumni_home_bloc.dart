@@ -19,7 +19,7 @@ class AlumniHomeBloc extends Bloc<AlumniHomeEvent, AlumniHomeState> {
       await db.collection('jobs').add(
         
         {
-          "company_name ": event.companyName,
+          "company_name": event.companyName,
           "position": event.position,
           'email': event.email,
           'salary': event.salary,
