@@ -79,6 +79,7 @@ class _PostJObScreenState extends State<PostJObScreen> {
               callback: () async {
                 context.read<AlumniHomeBloc>().add(
                       AlumniJobPostEvent(
+                        context,
                         companyName: companyNameController.text.trim(),
                         place: locationController.text.trim(),
                         contactNumber: contactController.text.trim(),

@@ -7,13 +7,14 @@ sealed class AlumniHomeEvent extends Equatable {
 }
 
 class AlumniJobPostEvent extends AlumniHomeEvent {
-  final String companyName;
+  final BuildContext context;
+    final String companyName;
   final String place;
   final String contactNumber;
   final String position;
   final String email;
   final String salary;
-  const AlumniJobPostEvent(
+  const AlumniJobPostEvent(this.context, 
       {required this.companyName,
       required this.place,
       required this.contactNumber,
