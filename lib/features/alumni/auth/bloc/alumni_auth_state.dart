@@ -14,12 +14,18 @@ class AlumniAuthLoading extends AlumniAuthState {}
 class AlumniAuthSuccess extends AlumniAuthState {
   final String email;
 
- const  AlumniAuthSuccess({required this.email});
-
+  const AlumniAuthSuccess({required this.email});
 }
 
 class AlumniAuthFailure extends AlumniAuthState {
   final String error;
- const  AlumniAuthFailure({required this.error});
-
+  const AlumniAuthFailure({required this.error});
 }
+
+class AlumniLoginFailedState extends AlumniAuthState {
+  final String error;
+
+  const AlumniLoginFailedState({required this.error});
+}
+
+class AlumniLoginSuccessState extends AlumniAuthState {}

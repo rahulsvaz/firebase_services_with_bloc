@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_services_with_bloc/features/firebase_services/fire_base_api.dart';
@@ -11,8 +12,30 @@ class AlumniAuthBloc extends Bloc<AlumniAuthEvent, AlumniAuthState> {
     on<AlumniAuthLoginEvent>(_alumniAuthLoginEvent);
     on<AlumniAuthSignUpEvent>(_alumniAuthSignUpEvent);
   }
+  // alumni log in
   FutureOr<void> _alumniAuthLoginEvent(
-      AlumniAuthLoginEvent event, Emitter<AlumniAuthState> emit) {}
+      AlumniAuthLoginEvent event, Emitter<AlumniAuthState> emit) async {
+    emit(
+      AlumniAuthLoading(),
+    );
+    try {
+      await FirebaseApi.signInAlumni(event.email, event.password);
+      emit(
+        AlumniLoginSuccessState(),
+      );
+    } catch (error) {
+      log(
+        error.toString(),
+      );
+      emit(
+        AlumniLoginFailedState(
+          error: error.toString(),
+        ),
+      );
+    }
+  }
+
+  // alumni sign up
   FutureOr<void> _alumniAuthSignUpEvent(
       AlumniAuthSignUpEvent event, Emitter<AlumniAuthState> emit) async {
     emit(
@@ -22,7 +45,7 @@ class AlumniAuthBloc extends Bloc<AlumniAuthEvent, AlumniAuthState> {
       await FirebaseApi.signUpAlumni(
           event.email, event.password, event.name, event.context);
       emit(
-        AlumniAuthSuccess(email:event.email ),
+        AlumniAuthSuccess(email: event.email),
       );
     } catch (error) {
       emit(

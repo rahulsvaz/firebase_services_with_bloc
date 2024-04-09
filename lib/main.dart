@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/bloc/alumni_auth_bloc.dart';
+import 'package:firebase_services_with_bloc/features/alumni_home_screen/bloc/alumni_home_bloc.dart';
+import 'package:firebase_services_with_bloc/features/alumni_home_screen/presentaion/alumni_home_screen.dart';
 import 'package:firebase_services_with_bloc/features/start_up_page/start_page.dart';
 import 'package:firebase_services_with_bloc/firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +21,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AlumniAuthBloc(),
-      child: const MaterialApp(
-        home: StartPage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AlumniAuthBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AlumniHomeBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        home: (FirebaseAuth.instance.currentUser != null)
+            ? const AlumniHomeScreen()
+            : const StartPage(),
       ),
     );
   }
