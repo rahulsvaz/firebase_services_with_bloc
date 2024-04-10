@@ -31,9 +31,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: (FirebaseAuth.instance.currentUser != null)
-            ? const AlumniHomeScreen()
-            : const StartPage(),
+        home: const StartPage(),
       ),
     );
   }
