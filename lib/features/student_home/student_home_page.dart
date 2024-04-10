@@ -1,5 +1,3 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +11,7 @@ class StudentHomePage extends StatefulWidget {
 class _StudentHomePageState extends State<StudentHomePage> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -32,7 +30,6 @@ class _StudentHomePageState extends State<StudentHomePage> {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
-                       
                             child: Card(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -68,10 +65,17 @@ class _StudentHomePageState extends State<StudentHomePage> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                     TextButton(onPressed: (){}, child: Text('Call HR')),                                  
-                                    TextButton(onPressed: (){}, child: Text('Apply Through Email')),
-
-                                  ],)
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: const Text('Call HR'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child:
+                                            const Text('Apply Through Email'),
+                                      ),
+                                    ],
+                                  )
                                 ],
                               ),
                             ),

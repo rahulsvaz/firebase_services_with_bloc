@@ -2,6 +2,7 @@ import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentat
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/auth_button.dart';
 import 'package:firebase_services_with_bloc/features/student/auth/student_login.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -15,6 +16,7 @@ class StartPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Lottie.asset('assets/animation/campus.json'),
             Text(
               'Welcome Back',
               style: TextStyle(
