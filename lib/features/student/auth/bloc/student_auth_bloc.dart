@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -33,8 +32,12 @@ class StudentAuthBloc extends Bloc<StudentAuthEvent, StudentAuthState> {
           )
           .then((value) => Navigator.pop(event.context));
     } catch (error) {
-      log(
-        error.toString(),
+      ScaffoldMessenger.of(event.context).showSnackBar(
+        SnackBar(
+          content: Text(
+            error.toString(),
+          ),
+        ),
       );
     }
   }
@@ -54,8 +57,12 @@ class StudentAuthBloc extends Bloc<StudentAuthEvent, StudentAuthState> {
                 (route) => false),
           );
     } catch (e) {
-      log(
-        e.toString(),
+      ScaffoldMessenger.of(event.context).showSnackBar(
+        SnackBar(
+          content: Text(
+            e.toString(),
+          ),
+        ),
       );
     }
   }

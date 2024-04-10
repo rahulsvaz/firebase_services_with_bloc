@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/alumni_login_page.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/auth_button.dart';
+import 'package:firebase_services_with_bloc/features/alumni_home_screen/presentation/alumni_home_screen.dart';
 import 'package:firebase_services_with_bloc/features/student/auth/student_login.dart';
+import 'package:firebase_services_with_bloc/features/student_home/student_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -35,25 +38,37 @@ class StartPage extends StatelessWidget {
             AuthButton(
               label: "Alumni",
               callback: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AlumniLoginPage(),
-                  ),
-                );
+                (FirebaseAuth.instance.currentUser == null)
+                    ? Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AlumniLoginPage(),
+                        ),
+                      )
+                    : const AlumniHomeScreen();
               },
             ),
             SizedBox(
               height: height * 0.03,
             ),
-             AuthButton(label: "Student",   callback: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const StudentLoginPage(),
-                  ),
-                );
-              },)
+            AuthButton(
+              label: "Student",
+              callback: () {
+                (FirebaseAuth.instance.currentUser == null)
+                    ? Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const StudentLoginPage(),
+                        ),
+                      )
+                    : Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const StudentHomePage(),
+                        ),
+                      );
+              },
+            )
           ],
         ),
       ),
