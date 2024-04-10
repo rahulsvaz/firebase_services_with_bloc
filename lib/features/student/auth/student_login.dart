@@ -1,12 +1,11 @@
-
-
-
 import 'package:firebase_services_with_bloc/constant/size/sized.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/action_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/auth_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/textfield.dart';
+import 'package:firebase_services_with_bloc/features/student/auth/bloc/student_auth_bloc.dart';
 import 'package:firebase_services_with_bloc/features/student/auth/student_sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 class StudentLoginPage extends StatefulWidget {
@@ -17,6 +16,9 @@ class StudentLoginPage extends StatefulWidget {
 }
 
 class _StudentLoginPageState extends State<StudentLoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,21 +37,34 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                 height: 300,
               ),
               const Height20(),
-              const CustomTextField(
+              CustomTextField(
                 label: 'Email',
+                controller: emailController,
               ),
               const Height20(),
-              const CustomTextField(label: 'Password'),
+              CustomTextField(
+                label: 'Password',
+                controller: passwordController,
+              ),
               const Height20(),
-              const AuthButton(
+              AuthButton(
                 label: 'Login',
+                callback: () async {
+                  context.read<StudentAuthBloc>().add(
+                        StudentAuthLoginEvent(
+                          context: context,
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                        ),
+                      );
+                },
               ),
               AccountActionButton(
                   callback: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => StudentSignUp(),
+                        builder: (context) => const StudentSignUp(),
                       ),
                     );
                   },

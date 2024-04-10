@@ -1,10 +1,10 @@
-
-
 import 'package:firebase_services_with_bloc/constant/size/sized.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/action_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/auth_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/textfield.dart';
+import 'package:firebase_services_with_bloc/features/student/auth/bloc/student_auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 class StudentSignUp extends StatefulWidget {
@@ -15,6 +15,9 @@ class StudentSignUp extends StatefulWidget {
 }
 
 class _StudentSignUpPageState extends State<StudentSignUp> {
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,13 +29,34 @@ class _StudentSignUpPageState extends State<StudentSignUp> {
             children: [
               Lottie.asset('assets/animation/signUp.json', height: 300),
               const Height20(),
-              const CustomTextField(label: 'Name'),
+              CustomTextField(
+                label: 'Name',
+                controller: nameController,
+              ),
               const Height20(),
-              const CustomTextField(label: 'email'),
+              CustomTextField(
+                label: 'email',
+                controller: emailController,
+              ),
               const Height20(),
-              const CustomTextField(label: 'Password'),
+              CustomTextField(
+                label: 'Password',
+                controller: passwordController,
+              ),
               const Height20(),
-              const AuthButton(label: 'SignUp'),
+              AuthButton(
+                label: 'SignUp',
+                callback: () {
+                  context.read<StudentAuthBloc>().add(
+                        StudentAuthSignUpEvent(
+      context: context,
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                          name: nameController.text.trim(),
+                        ),
+                      );
+                },
+              ),
               const Height20(),
               AccountActionButton(
                   statusText: "Already have an account back to",

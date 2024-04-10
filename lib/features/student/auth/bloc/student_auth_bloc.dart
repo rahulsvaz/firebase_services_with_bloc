@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:firebase_services_with_bloc/features/student_home/student_home_page.dart';
+import 'package:flutter/material.dart';
 part 'student_auth_event.dart';
 part 'student_auth_state.dart';
 
@@ -23,18 +23,36 @@ class StudentAuthBloc extends Bloc<StudentAuthEvent, StudentAuthState> {
           .createUserWithEmailAndPassword(
               email: event.email, password: event.password)
           .then(
-            (value) => auth.signOut(),
-          );
+            (value) => auth.signOut().then(
+                  (value) => ScaffoldMessenger.of(event.context).showSnackBar(
+                    SnackBar(
+                      content: Text('Student Data Created With ${event.email}'),
+                    ),
+                  ),
+                ),
+          )
+          .then((value) => Navigator.pop(event.context));
     } catch (error) {
-      log(error.toString());
+      log(
+        error.toString(),
+      );
     }
   }
 
   FutureOr<void> _studentAuthLoginEvent(
       StudentAuthLoginEvent event, Emitter<StudentAuthState> emit) async {
     try {
-      await auth.signInWithEmailAndPassword(
-          email: event.email, password: event.password);
+      await auth
+          .signInWithEmailAndPassword(
+              email: event.email, password: event.password)
+          .then(
+            (value) => Navigator.pushAndRemoveUntil(
+                event.context,
+                MaterialPageRoute(
+                  builder: (context) => const StudentHomePage(),
+                ),
+                (route) => false),
+          );
     } catch (e) {
       log(
         e.toString(),

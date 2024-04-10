@@ -1,9 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/bloc/alumni_auth_bloc.dart';
 import 'package:firebase_services_with_bloc/features/alumni_home_screen/bloc/alumni_home_bloc.dart';
-import 'package:firebase_services_with_bloc/features/alumni_home_screen/presentation/alumni_home_screen.dart';
 import 'package:firebase_services_with_bloc/features/start_up_page/start_page.dart';
+import 'package:firebase_services_with_bloc/features/student/auth/bloc/student_auth_bloc.dart';
 import 'package:firebase_services_with_bloc/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,9 +28,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AlumniHomeBloc(),
         ),
+        BlocProvider(
+          create: (context) => StudentAuthBloc(),
+        ),
       ],
-      child: MaterialApp(
-        home: const StartPage(),
+      child: const MaterialApp(
+        home: StartPage(),
       ),
     );
   }

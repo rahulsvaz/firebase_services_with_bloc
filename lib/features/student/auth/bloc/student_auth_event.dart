@@ -9,17 +9,23 @@ sealed class StudentAuthEvent extends Equatable {
 class StudentAuthLoginEvent extends StudentAuthEvent {
   final String email;
   final String password;
-  const StudentAuthLoginEvent({required this.email, required this.password});
+  final BuildContext context;
+  const StudentAuthLoginEvent(
+      {required this.email, required this.password, required this.context});
   @override
-  List<Object> get props => [email, password];
+  List<Object> get props => [email, password, context];
 }
 
 class StudentAuthSignUpEvent extends StudentAuthEvent {
+  final BuildContext context;
   final String email;
   final String password;
   final String name;
   const StudentAuthSignUpEvent(
-      {required this.email, required this.password, required this.name});
+      {required this.email,
+      required this.password,
+      required this.name,
+      required this.context});
   @override
-  List<Object> get props => [email, password, name];
+  List<Object> get props => [email, password, name, context];
 }

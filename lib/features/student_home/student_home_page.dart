@@ -1,20 +1,19 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class AlumniViewJob extends StatefulWidget {
-  const AlumniViewJob({super.key});
+class StudentHomePage extends StatefulWidget {
+  const StudentHomePage({super.key});
 
   @override
-  State<AlumniViewJob> createState() => _AlumniViewJobState();
+  State<StudentHomePage> createState() => _StudentHomePageState();
 }
 
-class _AlumniViewJobState extends State<AlumniViewJob> {
+class _StudentHomePageState extends State<StudentHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('All Jobs'),
-      ),
+    return  Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -33,26 +32,7 @@ class _AlumniViewJobState extends State<AlumniViewJob> {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
-                            onLongPress: () {
-                              // delete data
-                              FirebaseFirestore.instance
-                                  .collection('jobs')
-                                  .doc(data.id)
-                                  .delete()
-                                  .then((value) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text("Job Details deleted"),
-                                  ),
-                                );
-                              }).catchError((error) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text("Failed to delete item"),
-                                  ),
-                                );
-                              });
-                            },
+                       
                             child: Card(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -85,6 +65,13 @@ class _AlumniViewJobState extends State<AlumniViewJob> {
                                     child: Text(
                                         'Hr Contact Number:${data['contact_number']}'),
                                   ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                     TextButton(onPressed: (){}, child: Text('Call HR')),                                  
+                                    TextButton(onPressed: (){}, child: Text('Apply Through Email')),
+
+                                  ],)
                                 ],
                               ),
                             ),
