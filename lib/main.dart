@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_services_with_bloc/features/alumni/auth/bloc/alumni_auth_bloc.dart';
 import 'package:firebase_services_with_bloc/features/alumni_home_screen/bloc/alumni_home_bloc.dart';
+import 'package:firebase_services_with_bloc/features/splash_screen/splash.dart';
 import 'package:firebase_services_with_bloc/features/start_up_page/start_page.dart';
 import 'package:firebase_services_with_bloc/features/student/auth/bloc/student_auth_bloc.dart';
 import 'package:firebase_services_with_bloc/firebase_options.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: StartPage(),
+        home: SplashScreen(),
       ),
     );
   }

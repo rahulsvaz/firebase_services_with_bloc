@@ -3,8 +3,10 @@ import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentat
 import 'package:firebase_services_with_bloc/features/alumni/auth/login/presentation/widgets/auth_button.dart';
 import 'package:firebase_services_with_bloc/features/alumni_home_screen/presentation/alumni_home_screen.dart';
 import 'package:firebase_services_with_bloc/features/student/auth/student_login.dart';
-import 'package:firebase_services_with_bloc/features/student_home/student_home_page.dart';
+import 'package:firebase_services_with_bloc/features/student_home/student_g_nav.dart';
+import 'package:firebase_services_with_bloc/features/student_home/student_jobs_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:lottie/lottie.dart';
 
 class StartPage extends StatelessWidget {
@@ -64,14 +66,14 @@ class StartPage extends StatelessWidget {
                     : Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const StudentHomePage(),
+                          builder: (context) => const StudentGNav(),
                         ),
                       );
               },
             )
           ],
         ),
-      ),
+      ).animate().fade(delay: 500.ms ,duration: 500.ms),
     );
   }
 }

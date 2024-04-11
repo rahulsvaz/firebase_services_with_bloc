@@ -238,6 +238,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_animate:
+    dependency: "direct main"
+    description:
+      name: flutter_animate
+      sha256: "7c8a6594a9252dad30cc2ef16e33270b6248c4dedc3b3d06c86c4f3f4dc05ae5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.0"
   flutter_bloc:
     dependency: "direct main"
     description:
@@ -259,6 +267,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_shaders:
+    dependency: transitive
+    description:
+      name: flutter_shaders
+      sha256: "02750b545c01ff4d8e9bbe8f27a7731aa3778402506c67daa1de7f5fc3f4befe"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -277,6 +293,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.1"
+  google_nav_bar:
+    dependency: "direct main"
+    description:
+      name: google_nav_bar
+      sha256: "1c8e3882fa66ee7b74c24320668276ca23affbd58f0b14a24c1e5590f4d07ab0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.6"
+  gradient_slide_to_act:
+    dependency: "direct main"
+    description:
+      name: gradient_slide_to_act
+      sha256: aa08019f20f1a8fe80f61ed774c34aca9939c034cdb49cf4d5fa3329337d0ad3
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   http:
     dependency: transitive
     description:
@@ -506,6 +538,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  swipeable_button_view:
+    dependency: "direct main"
+    description:
+      name: swipeable_button_view
+      sha256: "6fbe3fe9084d849828fa49bf1f5d48a107f7797e3c7eff41aa61541c0b6d97f2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   term_glyph:
     dependency: transitive
     description:

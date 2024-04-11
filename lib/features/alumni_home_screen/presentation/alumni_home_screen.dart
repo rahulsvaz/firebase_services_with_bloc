@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_services_with_bloc/constant/size/sized.dart';
 import 'package:firebase_services_with_bloc/features/alumni/alumni_view_jobs/alumni_view_job_screen.dart';
+import 'package:firebase_services_with_bloc/features/alumni/view_sponsorship/view_sponsorship.dart';
 import 'package:firebase_services_with_bloc/features/alumni_post_job/post_job_scree.dart';
+import 'package:firebase_services_with_bloc/features/fun_raising/fundraising.dart';
 import 'package:firebase_services_with_bloc/features/start_up_page/start_page.dart';
 import 'package:flutter/material.dart';
 
@@ -58,15 +60,7 @@ class _AlumniHomeScreen extends State<AlumniHomeScreen> {
                   );
                 },
               ),
-            ],
-          ),
-          SizedBox(
-            height: height * 0.07,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              AlumniCards(
+ AlumniCards(
                 width: width,
                 height: height,
                 imagePath: 'assets/images/jobs.png',
@@ -80,6 +74,45 @@ class _AlumniHomeScreen extends State<AlumniHomeScreen> {
                   );
                 },
               ),
+
+
+            ],
+          ),
+          SizedBox(
+            height: height * 0.07,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+
+              AlumniCards(
+                width: width,
+                height: height,
+                imagePath: 'assets/images/sponsor.png',
+                label: 'View Sponsorship',
+                callback: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AlumniViewSponsor(),
+                    ),
+                  );
+                },
+              ),AlumniCards(
+                width: width,
+                height: height,
+                imagePath: 'assets/images/fund.png',
+                label: 'Fund Raising',
+                callback: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FundRaisingPage(),
+                    ),
+                  );
+                },
+              ),
+             
             ],
           ),
         ],

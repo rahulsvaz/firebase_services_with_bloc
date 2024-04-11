@@ -3,14 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_services_with_bloc/features/start_up_page/start_page.dart';
 import 'package:flutter/material.dart';
 
-class StudentHomePage extends StatefulWidget {
-  const StudentHomePage({super.key});
+class StudentJobsPage extends StatefulWidget {
+  const StudentJobsPage({super.key});
 
   @override
-  State<StudentHomePage> createState() => _StudentHomePageState();
+  State<StudentJobsPage> createState() => _StudentJobsPageState();
 }
 
-class _StudentHomePageState extends State<StudentHomePage> {
+class _StudentJobsPageState extends State<StudentJobsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +18,14 @@ class _StudentHomePageState extends State<StudentHomePage> {
         actions: [
           IconButton(
             onPressed: () async {
-              await FirebaseAuth.instance.signOut().then((value) =>
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const StartPage()),
-                      (route) => false));
+              await FirebaseAuth.instance.signOut().then(
+                    (value) => Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const StartPage(),
+                        ),
+                        (route) => false),
+                  );
             },
             icon: const Icon(Icons.logout),
           ),

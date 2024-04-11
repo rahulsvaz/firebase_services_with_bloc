@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_services_with_bloc/features/student_home/student_home_page.dart';
+import 'package:firebase_services_with_bloc/features/student_home/student_jobs_page.dart';
 import 'package:flutter/material.dart';
 part 'student_auth_event.dart';
 part 'student_auth_state.dart';
@@ -52,7 +52,7 @@ class StudentAuthBloc extends Bloc<StudentAuthEvent, StudentAuthState> {
             (value) => Navigator.pushAndRemoveUntil(
                 event.context,
                 MaterialPageRoute(
-                  builder: (context) => const StudentHomePage(),
+                  builder: (context) => const StudentJobsPage(),
                 ),
                 (route) => false),
           );
